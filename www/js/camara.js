@@ -8,7 +8,7 @@
     // PhoneGap is ready to be used!
     //
     function onDeviceReady() {
-        pictureSource=navigator.camera.PictureSourceType;
+        pictuzzreSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
     }
 
@@ -28,5 +28,5 @@
     // Called if something bad happens.
     // 
     function onFail(message) {
-      alert('Falló por: ' + message);
+      alert("Fallo por: " + message);
     }
