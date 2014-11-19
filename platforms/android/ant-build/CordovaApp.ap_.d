@@ -39,6 +39,7 @@
 /home/sergio/PracticasIWEB/Practica6/Galeria/platforms/android/assets/www/css/index.css \
 /home/sergio/PracticasIWEB/Practica6/Galeria/platforms/android/assets/www/img/logo.png \
 /home/sergio/PracticasIWEB/Practica6/Galeria/platforms/android/assets/www/js/camara.js \
+/home/sergio/PracticasIWEB/Practica6/Galeria/platforms/android/assets/www/js/galeria.js \
 /home/sergio/PracticasIWEB/Practica6/Galeria/platforms/android/assets/www/js/index.js \
 /home/sergio/PracticasIWEB/Practica6/Galeria/platforms/android/assets/www/plugins/org.apache.cordova.camera \
 /home/sergio/PracticasIWEB/Practica6/Galeria/platforms/android/assets/www/plugins/org.apache.cordova.camera/www \
