@@ -1,0 +1,12 @@
+.marco{
+    display: inline-block;
+}
+
+
+
+.grande img{
+    margin: 10% auto 0 ;
+    border: solid 5px #FFF ;
+    width: 400px;
+    height: 350px;
+}

@@ -1,14 +1,15 @@
 var numeroFotos = 0
 
 function incrustaFoto(direccion){
-    
     var imagen = document.createElement("IMG")
     imagen.id = "imagen" + numeroFotos
     imagen.src = direccion
-    imagen.width = 500
-    imagen.height = 500
+    imagen.width = 50
+    imagen.height = 50
     var marco = document.createElement("DIV")
+    marco.className="marco"
     marco.id = "marco" + numeroFotos
+    imagen.addEventListener("click",function(){ agrandaFoto(this);})
     marco.appendChild(imagen)
     
     var c = window.prompt("Comenta la foto", "")
@@ -20,7 +21,15 @@ function incrustaFoto(direccion){
     }
 
     var galeria = document.getElementById("galeria")
-    galeria.appendChild(imagen)
+    galeria.appendChild(marco)
     numeroFotos++
 }
+
+function agrandaFoto(imagen){
+    var grande = document.createElement("DIV")
+    grande.className="grande"
+    grande.appendChild(imagen)
+    document.body.appendChild(grande)
+}
+
     

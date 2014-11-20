@@ -1,2 +1,2 @@
-/home/sergio/PracticasIWEB/Practica6/Galeria/platforms/android/ant-build/AndroidManifest.xml : \
-/home/sergio/PracticasIWEB/Practica6/Galeria/platforms/android/AndroidManifest.xml \
+/home/usuario/practica6/platforms/android/ant-build/AndroidManifest.xml : \
+/home/usuario/practica6/platforms/android/AndroidManifest.xml \
