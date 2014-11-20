@@ -2,6 +2,8 @@
 /home/usuario/practica6/platforms/android/ant-build/classes/org/apache/cordova/camera/CameraLauncher.class \
 /home/usuario/practica6/platforms/android/ant-build/classes/org/apache/cordova/camera/ExifHelper.class \
 /home/usuario/practica6/platforms/android/ant-build/classes/org/apache/cordova/camera/FileHelper.class \
+/home/usuario/practica6/platforms/android/ant-build/classes/org/apache/cordova/devicemotion/AccelListener.class \
+/home/usuario/practica6/platforms/android/ant-build/classes/org/apache/cordova/devicemotion/AccelListener$1.class \
 /home/usuario/practica6/platforms/android/ant-build/classes/com/practicas/galeria/R$xml.class \
 /home/usuario/practica6/platforms/android/ant-build/classes/com/practicas/galeria/R$string.class \
 /home/usuario/practica6/platforms/android/ant-build/classes/com/practicas/galeria/R.class \

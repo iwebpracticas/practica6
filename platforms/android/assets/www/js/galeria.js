@@ -12,7 +12,8 @@ function incrustaFoto(direccion){
     imagen.addEventListener("click",function(){ agrandaFoto(this);})
     marco.appendChild(imagen)
     
-    var c = window.prompt("Comenta la foto", "")
+    //geolocalizame(imagen)
+    var c = window.prompt("Ponga un titulo a la foto", "")
     
     if (c) {
         var comentario = document.createElement("DIV")
@@ -30,6 +31,5 @@ function agrandaFoto(imagen){
     grande.className="grande"
     grande.appendChild(imagen)
     document.body.appendChild(grande)
-}
-
     
+}
