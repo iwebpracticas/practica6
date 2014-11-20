@@ -20,7 +20,7 @@ function incrustaFoto(direccion){
     }
 
     var galeria = document.getElementById("galeria")
-    galeria.appendChild(marco)
+    galeria.appendChild(imagen)
     numeroFotos++
 }
     
