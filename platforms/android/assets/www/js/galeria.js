@@ -1,35 +1,51 @@
-var numeroFotos = 0
+var numeroFotos = 0;
+var fotoActual = 0;
+var fotos = [];
 
-function incrustaFoto(direccion){
-    var imagen = document.createElement("IMG")
-    imagen.id = "imagen" + numeroFotos
-    imagen.src = direccion
-    imagen.width = 50
-    imagen.height = 50
-    var marco = document.createElement("DIV")
-    marco.className="marco"
-    marco.id = "marco" + numeroFotos
-    imagen.addEventListener("click",function(){ agrandaFoto(this);})
-    marco.appendChild(imagen)
+function incrustaFoto(imagen){
+    var link = $('<a href="#' + numeroFotos + '"/>')
+    link.click(function(){muestraFoto($(this))})
+    var img = $('<img clas = "imagen" id="imagen' + numeroFotos + '"src="' + imagen +'"/>');
+    fotos.push(img)
     
-    //geolocalizame(imagen)
-    var c = window.prompt("Ponga un titulo a la foto", "")
+    var miniatura = img.clone(true).MyThumbnail({thumbWidth:50,thumbHeight:50,backgroundColor:"#ccc",imageDivClass:"myPic"});
+    
+    var contenedor = $('<figure class = "contenedor" id="contenedor' + numeroFotos + '"/>');
+    link.append(miniatura);
+    contenedor.append(link);
+    
+   var c = prompt("Ponga titulo a la foto","");
     
     if (c) {
-        var comentario = document.createElement("DIV")
-        comentario.innerHTML = c
-        marco.appendChild(comentario)
+        var comentario = $('<figcaption class = "comentario" id="comentario' + numeroFotos + '"/>');
+        comentario.html(c);
+        contenedor.append(comentario);
     }
-
-    var galeria = document.getElementById("galeria")
-    galeria.appendChild(marco)
-    numeroFotos++
+    
+    $("#marco").append(contenedor);
+    
+    numeroFotos++;
+     
 }
 
-function agrandaFoto(imagen){
-    var grande = document.createElement("DIV")
-    grande.className="grande"
-    grande.appendChild(imagen)
-    document.body.appendChild(grande)
+
+function muestraFoto(link){
+    desaparece()
     
+    if (link.attr("href")){
+        alert(link.attr("href").split("#")[1])
+        fotoActual = parseInt(link.attr("href").split("#")[1])
+    }
+    $("#foto").append(fotos[fotoActual].clone(true).addClass("imgGrande"))
+    aparece()
+}
+
+
+function aparece(){
+$("#foto").fadeIn(2000)
+}
+
+function desaparece(){
+$("#foto").fadeOut(2000)
+$("#foto").empty();
 }

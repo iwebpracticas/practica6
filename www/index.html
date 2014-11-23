@@ -3,16 +3,23 @@
 <html>
   <head>
     <title>Capture Photo</title>
-    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1"/>
-    <link rel="stylesheet" href="css/prueba.css">
-    <script type="text/javascript" charset="utf-8" src = "js/galeria.js"></script>
-    <script type="text/javascript" charset="utf-8" src = "cordova.js"></script>
-    <script type="text/javascript" charset="utf-8" src = "js/camara.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <link href="css/MyThumbnail.css" type="text/css" rel="stylesheet"/>
+      
+      <script src="js/jquery.js" type="text/javascript"></script>
+      <script type="text/javascript" src="js/MyThumbnail.js"></script>
+      <script type="text/javascript" charset="utf-8" src = "cordova.js"></script>
+      <script type="text/javascript" charset="utf-8" src = "js/galeria.js"></script>
+      <script type="text/javascript" charset="utf-8" src = "js/camara.js"></script>
+      
   </head>
   <body>
+    <h1>Galeria geolocalizada</h1>
+    <div>
     <button onclick="capturePhotoWithFile();">Capturar foto con la camara</button><br>
     <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">Importar foto de la libreria</button><br>
-    <section id="galeria">
-      </section>
+    <div class = "marco" id="marco"></div>
+    <div id ="foto"></div>
+      </div>
   </body>
 </html>
