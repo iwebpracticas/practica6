@@ -36,9 +36,8 @@
 /home/sergio/IWEB/practica6/platforms/android/assets/www/plugins \
 /home/sergio/IWEB/practica6/platforms/android/assets/www/img \
 /home/sergio/IWEB/practica6/platforms/android/assets/www/index.html \
-/home/sergio/IWEB/practica6/platforms/android/assets/www/js/nailthumb.js \
 /home/sergio/IWEB/practica6/platforms/android/assets/www/js/geolocalizacion.js \
-/home/sergio/IWEB/practica6/platforms/android/assets/www/js/index.js \
+/home/sergio/IWEB/practica6/platforms/android/assets/www/js/almacenamiento.js \
 /home/sergio/IWEB/practica6/platforms/android/assets/www/js/galeria.js \
 /home/sergio/IWEB/practica6/platforms/android/assets/www/js/MyThumbnail.js \
 /home/sergio/IWEB/practica6/platforms/android/assets/www/js/camara.js \
@@ -56,5 +55,4 @@
 /home/sergio/IWEB/practica6/platforms/android/assets/www/plugins/org.apache.cordova.camera/www/CameraPopoverOptions.js \
 /home/sergio/IWEB/practica6/platforms/android/assets/www/plugins/org.apache.cordova.camera/www/Camera.js \
 /home/sergio/IWEB/practica6/platforms/android/assets/www/img/logo.png \
-/home/sergio/IWEB/practica6/platforms/android/assets/www/img/prueba.jpg \
 /home/sergio/IWEB/practica6/platforms/android/ant-build/AndroidManifest.xml \

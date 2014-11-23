@@ -1,9 +1,9 @@
 #foto {
     display: none;
     background-color: rgba(0,0,255,0.5);
-    width: auto;
-    height: auto;
-    position: absolute;
+    width: inherit;
+    height: inherit;
+    position: relative;
     text-align: center;
     top: 20%;
 }
