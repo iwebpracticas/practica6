@@ -16,8 +16,7 @@ function incrustaFotoTemp(imagen) {
     fotos.push(img);
     
     var miniatura = img.clone(true).MyThumbnail({thumbWidth:50,thumbHeight:50,backgroundColor:"#ccc",imageDivClass:"myPic"});
-    
-    var contenedor = $('<figure class = "contenedor" id="contenedorT' + numeroFotosT + '"/>');
+    alert(miniatura.attr("id"));
     link.append(miniatura);
     
     $("#marcoT").append(link);
@@ -33,7 +32,7 @@ function incrustaFotoGuardada(imagen){
     
     var miniatura = img.clone(true).MyThumbnail({thumbWidth:50,thumbHeight:50,backgroundColor:"#ccc",imageDivClass:"myPic"});
     
-    var contenedor = $('<figure class = "contenedor" id="contenedorG' + numeroFotosG + '"/>');
+
     link.append(miniatura);
     
     $("#marcoG").append(link);
@@ -79,6 +78,24 @@ $("#foto").hide();
 $("#foto").empty();
 }
 
+function borraFoto(guardada){
+    if(guardada){
+         window.resolveLocalFileSystemURI(fotoActual.attr("src"), function(entrada){
+             var idFotoActual = parseInt(fotoActual.attr("id").split("G")[1])
+             almacenadas[idFotoActual] = null;
+             entrada.remove();
+              //$("#marcoT").empty();
+             desaparece();
+         }, onFail);
+    }
+    else{
+        var idFotoActual = parseInt(fotoActual.attr("id").split("T")[1])
+            fotos[idFotoActual] = null;
+            //$("#marcoT").empty();
+            desaparece();
+    }
+}
+
 function guardaFoto(guardada){ 
     if (!guardada){
     imagenURI = fotoActual.attr('src')
@@ -87,17 +104,17 @@ function guardaFoto(guardada){
     else{alert("Ya esta guardada")}
 }
 
-function borraFoto(guardada){}
-
 function mueveImagen(imagen){
     window.resolveLocalFileSystemURI(cordova.file.dataDirectory, function(dest){
         var nombre = "imagen"+numeroFotosG+".jpg";
-        alert(nombre);
         imagen.copyTo(dest, nombre, function(){
             almacenadas.push(fotoActual);
             incrustaFotoGuardada(fotoActual.attr("src"));
             var idFotoActual = parseInt(fotoActual.attr("id").split("T")[1])
             fotos[idFotoActual] = null;
+            alert("#imagenT" + idFotoActual);
+            //$("#marcoT").empty();
+            desaparece();
         }, onFail);
     }, onFail);
     
