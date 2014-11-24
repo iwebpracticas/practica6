@@ -23,7 +23,7 @@ function incrustaFotoTemp(imagen) {
     $("#marcoT").append(link);
     
     numeroFotosT++;   
-}    botones.append(botonGuardar);
+}
 
 function incrustaFotoGuardada(imagen){
     var link = $('<a href="#' + numeroFotosG + '"/>');
@@ -52,11 +52,15 @@ function muestraFoto(link,guardada) {
         fotoActual = almacenadas[indiceFoto]
         botonBorrar.attr("onclick", "borraFoto(true)");
         botonGuardar.attr("onclick", "guardaFoto(true)");
+        botones.append(botonGuardar);
+        botones.append(botonBorrar);
     }
     else{
         fotoActual = fotos[indiceFoto]
         botonBorrar.attr("onclick", "borraFoto(false)");
         botonGuardar.attr("onclick", "guardaFoto(false)");
+        botones.append(botonGuardar);
+        botones.append(botonBorrar);
     }
     
     $("#foto").append(fotoActual.clone(true).addClass("imgGrande"))
@@ -83,7 +87,7 @@ function guardaFoto(guardada){
     else{alert("Ya esta guardada")}
 }
 
-function borraFoto(){}
+function borraFoto(guardada){}
 
 function mueveImagen(imagen){
     window.resolveLocalFileSystemURI(cordova.file.dataDirectory, function(dest){

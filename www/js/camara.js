@@ -13,7 +13,7 @@
     }
 
     function capturePhotoWithFile() {
-      navigator.camera.getPicture(incrustaFoto, onFail, {
+      navigator.camera.getPicture(incrustaFotoTemp, onFail, {
         quality: 50,
         destinationType: destinationType.FILE_URI,
         correctOrientation: true,
@@ -26,7 +26,7 @@
     //
     function getPhoto(source) {
       // Retrieve image file location from specified source
-      navigator.camera.getPicture(incrustaFoto, onFail, { quality: 50, 
+      navigator.camera.getPicture(incrustaFotoTemp, onFail, { quality: 50, 
         destinationType: destinationType.FILE_URI,
         sourceType: source });
     }
