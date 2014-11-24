@@ -3,7 +3,7 @@ var fotoActual = 0;
 var fotos = [];
 var almacenadas[];
 var botones = $('<div id ="botones"> <button onclick="desaparece()" id = "salir">Salir</button><br></div>')
-//var botonGuardar = $('<button onclick="" id = "guardar"/>')
+var botonGuardar = $('<button onclick="" id = "guardar"/>')
 var fotosGuardadas;
 
 
@@ -12,7 +12,7 @@ function incrustaFoto(imagen, guardada){
     link.click(function(){muestraFoto($(this))})
     var img = $('<img clas = "imagen" id="imagen' + numeroFotos + '"src="' + imagen +'"/>');
     fotos.push(img)
-    //if(guardada){almacenadas.push(guardada)}else{almacenadas.push(false)};
+    if(guardada){almacenadas.push(guardada)}else{almacenadas.push(false)};
     
     var miniatura = img.clone(true).MyThumbnail({thumbWidth:50,thumbHeight:50,backgroundColor:"#ccc",imageDivClass:"myPic"});
     
@@ -32,7 +32,15 @@ function muestraFoto(link){
         fotoActual = parseInt(link.attr("href").split("#")[1])
     }
     $("#foto").append(fotos[fotoActual].clone(true).addClass("imgGrande"))
-    //if(almacenadas[fotoActual]){}
+    if(almacenadas[fotoActual]){
+        botonGuardar.html("Borrar"); 
+        botonGuardar.attr("onclick", "borraFoto()");
+    }
+    else{
+        botonGuardar.html("Guardar");
+        botonGuardar.attr("onclick","guardaFoto()");
+    }
+    botones.append(botonGuardar)
     $("#foto").append(botones)
     aparece()
 }
@@ -48,8 +56,11 @@ $("#foto").empty();
 }
 
 function guardaFoto(){
+    if (!almacenadas[fotoActual]){
     imagenURI = fotos[fotoActual].attr('src')
     window.resolveLocalFileSystemURI(imagenURI, mueveImagen, onFail);
+    }
+    else{alert("Ya esta guardada")}
 }
 
 function mueveImagen(imagen){
