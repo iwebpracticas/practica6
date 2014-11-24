@@ -1,39 +1,66 @@
-var numeroFotos = 0;
-var fotoActual = 0;
+var numeroFotosT = 0;
+var numeroFotosG = 0;
+var fotoActual;
 var fotos = [];
 var almacenadas = [];
 var botones = $('<div id ="botones"> <button onclick="desaparece()" id = "salir">Salir</button><br></div>');
-var botonGuardar = $('<button onclick="guardaFoto()" id = "guardar">Guardar</button>');
-var fotosGuardadas;
+var botonGuardar = $('<button onclick="" id = "guardar">Guardar</button>');
+var botonBorrar = $('<button onclick="" id = "borrar">Borrar</button>');
 
 
-function incrustaFoto(imagen, guardada) {
-    var link = $('<a href="#' + numeroFotos + '"/>');
-    link.click(function(){muestraFoto($(this))});
-    var img = $('<img clas = "imagen" id="imagen' + numeroFotos + '"src="' + imagen +'"/>');
+
+function incrustaFotoTemp(imagen) {
+    var link = $('<a href="#' + numeroFotosT + '"/>');
+    link.click(function(){muestraFoto($(this),false)});
+    var img = $('<img clas = "imagen" id="imagenT' + numeroFotosT + '"src="' + imagen +'"/>');
     fotos.push(img);
-    if(guardada){almacenadas.push(guardada);}
-    else{almacenadas.push(false);}
     
     var miniatura = img.clone(true).MyThumbnail({thumbWidth:50,thumbHeight:50,backgroundColor:"#ccc",imageDivClass:"myPic"});
     
-    var contenedor = $('<figure class = "contenedor" id="contenedor' + numeroFotos + '"/>');
+    var contenedor = $('<figure class = "contenedor" id="contenedorT' + numeroFotosT + '"/>');
     link.append(miniatura);
     
-    $("#marco").append(link);
+    $("#marcoT").append(link);
     
-    numeroFotos++;   
+    numeroFotosT++;   
+}    botones.append(botonGuardar);
+
+function incrustaFotoGuardada(imagen){
+    var link = $('<a href="#' + numeroFotosG + '"/>');
+    link.click(function(){muestraFoto($(this),true)});
+    var img = $('<img clas = "imagen" id="imagenG' + numeroFotosG + '"src="' + imagen +'"/>');
+    almacenadas.push(img);
+    
+    var miniatura = img.clone(true).MyThumbnail({thumbWidth:50,thumbHeight:50,backgroundColor:"#ccc",imageDivClass:"myPic"});
+    
+    var contenedor = $('<figure class = "contenedor" id="contenedorG' + numeroFotosG + '"/>');
+    link.append(miniatura);
+    
+    $("#marcoG").append(link);
+    
+    numeroFotosG++;   
 }
 
-
-function muestraFoto(link){
+function muestraFoto(link,guardada) {
     desaparece();
-    
     if (link.attr("href")){
-        fotoActual = parseInt(link.attr("href").split("#")[1]);
+        var indiceFoto = parseInt(link.attr("href").split("#")[1]);
     }
-    $("#foto").append(fotos[fotoActual].clone(true).addClass("imgGrande"))
-    botones.append(botonGuardar);
+    
+    
+    if(guardada){
+        fotoActual = almacenadas[indiceFoto]
+        botonBorrar.attr("onclick", "borraFoto(true)");
+        botonGuardar.attr("onclick", "guardaFoto(true)");
+    }
+    else{
+        fotoActual = fotos[indiceFoto]
+        botonBorrar.attr("onclick", "borraFoto(false)");
+        botonGuardar.attr("onclick", "guardaFoto(false)");
+    }
+    
+    $("#foto").append(fotoActual.clone(true).addClass("imgGrande"))
+    
     $("#foto").append(botones);
     aparece();
 }
@@ -48,21 +75,25 @@ $("#foto").hide();
 $("#foto").empty();
 }
 
-function guardaFoto(){
-    if (!almacenadas[fotoActual]){
-    imagenURI = fotos[fotoActual].attr('src')
+function guardaFoto(guardada){ 
+    if (!guardada){
+    imagenURI = fotoActual.attr('src')
     window.resolveLocalFileSystemURI(imagenURI, mueveImagen, onFail);
     }
     else{alert("Ya esta guardada")}
 }
 
+function borraFoto(){}
+
 function mueveImagen(imagen){
     window.resolveLocalFileSystemURI(cordova.file.dataDirectory, function(dest){
-        var nombre = "imagen"+fotosGuardadas+".jpg";
+        var nombre = "imagen"+numeroFotosG+".jpg";
         alert(nombre);
         imagen.copyTo(dest, nombre, function(){
-            fotosGuardadas++;
-            almacenadas[fotoActual] = true;
+            almacenadas.push(fotoActual);
+            incrustaFotoGuardada(fotoActual.attr("src"));
+            var idFotoActual = parseInt(fotoActual.attr("id").split("T")[1])
+            fotos[idFotoActual] = null;
         }, onFail);
     }, onFail);
     

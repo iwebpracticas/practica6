@@ -1,4 +1,6 @@
 var nFotosG = 0;
+var fotosPreparadas = 0;
+
 document.addEventListener("deviceready",dispListo,false);
 
 function dispListo(){
@@ -12,5 +14,5 @@ function errorFS(mensaje){
 function exitoFS(){
     spinnerplugin.show();
     var fotoURI = cordova.file.dataDirectory+"imagen"+nFotosG+".jpg";
-    window.resolveLocalFileSystemURL(fotoURI, function(){incrustaFoto(fotoURI,true);nFotosG++;exitoFS();}, function(){spinnerplugin.hide();fotosGuardadas=nFotosG});
+    window.resolveLocalFileSystemURL(fotoURI, function(){incrustaFotoGuardada(fotoURI,true);nFotosG++;exitoFS();}, function(){spinnerplugin.hide();});
 }
