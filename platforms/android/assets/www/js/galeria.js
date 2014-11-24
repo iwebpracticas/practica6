@@ -1,18 +1,19 @@
 var numeroFotos = 0;
 var fotoActual = 0;
 var fotos = [];
-var almacenadas[];
-var botones = $('<div id ="botones"> <button onclick="desaparece()" id = "salir">Salir</button><br></div>')
-var botonGuardar = $('<button onclick="" id = "guardar"/>')
+var almacenadas = [];
+var botones = $('<div id ="botones"> <button onclick="desaparece()" id = "salir">Salir</button><br></div>');
+var botonGuardar = $('<button onclick="guardaFoto()" id = "guardar">Guardar</button>');
 var fotosGuardadas;
 
 
-function incrustaFoto(imagen, guardada){
-    var link = $('<a href="#' + numeroFotos + '"/>')
-    link.click(function(){muestraFoto($(this))})
+function incrustaFoto(imagen, guardada) {
+    var link = $('<a href="#' + numeroFotos + '"/>');
+    link.click(function(){muestraFoto($(this))});
     var img = $('<img clas = "imagen" id="imagen' + numeroFotos + '"src="' + imagen +'"/>');
-    fotos.push(img)
-    if(guardada){almacenadas.push(guardada)}else{almacenadas.push(false)};
+    fotos.push(img);
+    if(guardada){almacenadas.push(guardada);}
+    else{almacenadas.push(false);}
     
     var miniatura = img.clone(true).MyThumbnail({thumbWidth:50,thumbHeight:50,backgroundColor:"#ccc",imageDivClass:"myPic"});
     
@@ -26,23 +27,15 @@ function incrustaFoto(imagen, guardada){
 
 
 function muestraFoto(link){
-    desaparece()
+    desaparece();
     
     if (link.attr("href")){
-        fotoActual = parseInt(link.attr("href").split("#")[1])
+        fotoActual = parseInt(link.attr("href").split("#")[1]);
     }
     $("#foto").append(fotos[fotoActual].clone(true).addClass("imgGrande"))
-    if(almacenadas[fotoActual]){
-        botonGuardar.html("Borrar"); 
-        botonGuardar.attr("onclick", "borraFoto()");
-    }
-    else{
-        botonGuardar.html("Guardar");
-        botonGuardar.attr("onclick","guardaFoto()");
-    }
-    botones.append(botonGuardar)
-    $("#foto").append(botones)
-    aparece()
+    botones.append(botonGuardar);
+    $("#foto").append(botones);
+    aparece();
 }
 
 
@@ -67,8 +60,11 @@ function mueveImagen(imagen){
     window.resolveLocalFileSystemURI(cordova.file.dataDirectory, function(dest){
         var nombre = "imagen"+fotosGuardadas+".jpg";
         alert(nombre);
-        imagen.copyTo(dest, nombre, function(){fotosGuardadas++;}, onFail);
+        imagen.copyTo(dest, nombre, function(){
+            fotosGuardadas++;
+            almacenadas[fotoActual] = true;
         }, onFail);
+    }, onFail);
     
 }
 
