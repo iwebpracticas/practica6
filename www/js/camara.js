@@ -13,7 +13,7 @@
     }
 
     function capturePhotoWithFile() {
-        navigator.camera.getPicture(incrustaFoto, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI });
+        navigator.camera.getPicture(incrustaFoto, onFail, { quality: 50, correctOrientation: true, destinationType: Camera.DestinationType.FILE_URI });
     }
     
     // A button will call this function
