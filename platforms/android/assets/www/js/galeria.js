@@ -46,7 +46,6 @@ function muestraFoto(link,guardada) {
         var indiceFoto = parseInt(link.attr("href").split("#")[1]);
     }
     
-    
     if(guardada){
         fotoActual = almacenadas[indiceFoto]
         botonBorrar.attr("onclick", "borraFoto(true)");
