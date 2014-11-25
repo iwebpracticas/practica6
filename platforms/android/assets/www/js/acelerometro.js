@@ -1,9 +1,10 @@
+var watchID;
 var flagSigno=0;
 var ultimaX;
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
-    var watchID = navigator.accelerometer.watchAcceleration(dameSigno,onError, {frequency: 500});
+    activaWatch();
 }
 
 function dameSigno(acceleration){
@@ -11,12 +12,12 @@ function dameSigno(acceleration){
     ultimaX = acceleration.x;
     
     if(incremento<-9){
-        flagSigno=-1;
+        flagSigno=1;
         compruebaFoto();
     }
     
     else if (incremento>9){
-        flagSigno=1;
+        flagSigno=-1;
         compruebaFoto();
     }
 }
@@ -64,4 +65,8 @@ function cambiaFoto(numeroFoto, guardada) {
 
 function onError() {
     alert("Ha habido un error" + mensaje);
+}
+
+function activaWatch(){
+     watchID=navigator.accelerometer.watchAcceleration(dameSigno,onError, {frequency: 200});
 }

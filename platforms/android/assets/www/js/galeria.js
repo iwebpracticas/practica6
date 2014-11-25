@@ -16,7 +16,6 @@ function incrustaFotoTemp(imagen) {
     fotos.push(img);
     
     var miniatura = img.clone(true).MyThumbnail({thumbWidth:50,thumbHeight:50,backgroundColor:"#ccc",imageDivClass:"myPic"});
-    alert(miniatura.attr("id"));
     link.append(miniatura);
     
     $("#marcoT").append(link);
@@ -111,7 +110,6 @@ function mueveImagen(imagen){
             incrustaFotoGuardada(fotoActual.attr("src"));
             var idFotoActual = parseInt(fotoActual.attr("id").split("T")[1])
             fotos[idFotoActual] = null;
-            alert("#imagenT" + idFotoActual);
             //$("#marcoT").empty();
             desaparece();
         }, onFail);
