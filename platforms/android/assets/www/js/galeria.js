@@ -84,16 +84,15 @@ function borraFoto(guardada){
              var idFotoActual = parseInt(fotoActual.attr("id").split("G")[1])
              almacenadas[idFotoActual] = null;
              entrada.remove();
+              //$("#marcoT").empty();
              desaparece();
          }, onFail);
     }
     else{
-      window.resolveLocalFileSystemURI(fotoActual.attr("src"), function(entrada){
-             var idFotoActual = parseInt(fotoActual.attr("id").split("G")[1])
-             fotos[idFotoActual] = null;
-             entrada.remove();
-             desaparece();
-         }, onFail);   
+        var idFotoActual = parseInt(fotoActual.attr("id").split("T")[1])
+            fotos[idFotoActual] = null;
+            //$("#marcoT").empty();
+            desaparece();
     }
 }
 
