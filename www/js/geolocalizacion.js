@@ -32,8 +32,7 @@ function muestrameEnMapa() {
     alert(idFoto.charAt(idFoto.length-2))
     if(idFoto.charAt(idFoto.length-2)=="T"){
         var posicionAMostrar=posicionesT[idFotoActual]
-        alert(posicionAMostrar.coords.latitude)
-        alert(parseFloat(posicionAMostrar.coords.latitude))
+        alert(posicionAMostrar)
         var map = new GMaps({
           div: '#mapa',
           lat: posicionAMostrar.coords.latitude,
@@ -42,7 +41,7 @@ function muestrameEnMapa() {
         alert("Paso 2")
         //map.addMarker({ lat: lat, lng: lng})
         alert("Paso 3")
-        $("#map").append(botonVolver);
+        $("#mapa").append(botonVolver);
         alert("Paso 4")
         sacaMapa()
         alert("Paso 5")
@@ -61,7 +60,7 @@ function muestrameEnMapa() {
         alert("Paso 3 else")
         //map.addMarker({ lat: lat, lng: lng})
         alert("Paso 4 else")
-        $("#map").append(botonVolver);
+        $("#mapa").append(botonVolver);
         alert("Paso 5 else")
         sacaMapa()
     }
@@ -69,7 +68,7 @@ function muestrameEnMapa() {
 }
 
 function sacaMapa(){
-    desaparece()
+    $("#foto").hide();
     $("#mapa").show();
 }
 
