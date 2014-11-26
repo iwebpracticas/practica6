@@ -3,44 +3,49 @@ var numeroFotosG = 0;
 var fotoActual;
 var fotos = [];
 var almacenadas = [];
-var botones = $('<div id ="botones"> <button onclick="desaparece()" id = "salir">Salir</button><br></div>');
+var botones = $('<div id ="botones"> <button onclick="" id="mostrarMapa">Mapa</button><button onclick="desaparece()" id ="salir">Salir</button><br></div>');
 var botonGuardar = $('<button onclick="" id = "guardar">Guardar</button>');
 var botonBorrar = $('<button onclick="" id = "borrar">Borrar</button>');
-var botonMapa = $('<button onclick="" id="mostrar">Mapa</button>');
+
 
 
 function incrustaFotoTemp(imagen) {
     var link = $('<a href="#' + numeroFotosT + '"/>');
     link.click(function(){muestraFoto($(this),false)});
-    var img = $('<img clas = "imagen" id="imagenT' + numeroFotosT + '"src="' + imagen +'"/>');
+    var img = $('<img class="imagenes" id="imagenT' + numeroFotosT + '"src="' + imagen +'"/>');
     fotos.push(img);
     
     var miniatura = img.clone(true).MyThumbnail({thumbWidth:50,thumbHeight:50,backgroundColor:"#ccc",imageDivClass:"myPic"});
     link.append(miniatura);
     
-    $("#marcoT").append(link);
+    var contenedor = $('<div class="contenedores"></div>')
+    contenedor.attr("id","contenedorT"+numeroFotosT);
     
-    numeroFotosT++; 
+    contenedor.append(link);
+    $("#marcoT").append(contenedor);
     
-    //geolocalizame(img);
+    numeroFotosT++;
+    
+    geolocalizame(img);
 }
 
 function incrustaFotoGuardada(imagen){
     var link = $('<a href="#' + numeroFotosG + '"/>');
     link.click(function(){muestraFoto($(this),true)});
-    var img = $('<img clas = "imagen" id="imagenG' + numeroFotosG + '"src="' + imagen +'"/>');
+    var img = $('<img class="imagen" id="imagenG' + numeroFotosG + '"src="' + imagen +'"/>');
     almacenadas.push(img);
     
     var miniatura = img.clone(true).MyThumbnail({thumbWidth:50,thumbHeight:50,backgroundColor:"#ccc",imageDivClass:"myPic"});
-    
-
     link.append(miniatura);
+    var contenedor = $('<div class="contenedores"' + numeroFotosG + '"></div>')
+    contenedor.attr("id","contenedorG"+numeroFotosG);
     
-    $("#marcoG").append(link);
+    contenedor.append(link);
+    $("#marcoG").append(contenedor);
     
     numeroFotosG++;   
     
-    //geolocalizame(img);
+    geolocalizame(img);
 }
 
 function muestraFoto(link,guardada) {
@@ -53,19 +58,15 @@ function muestraFoto(link,guardada) {
         fotoActual = almacenadas[indiceFoto]
         botonBorrar.attr("onclick", "borraFoto(true)");
         botonGuardar.attr("onclick", "guardaFoto(true)");
-        botonMapa.attr("onclick", "muestrameEnMapa(true)");
         botones.append(botonGuardar);
         botones.append(botonBorrar);
-        botones.append(botonMapa);
     }
     else{
         fotoActual = fotos[indiceFoto]
         botonBorrar.attr("onclick", "borraFoto(false)");
         botonGuardar.attr("onclick", "guardaFoto(false)");
-        botonMapa.attr("onclick", "muestrameEnMapa(false)");
         botones.append(botonGuardar);
         botones.append(botonBorrar);
-        botones.append(botonMapa);
     }
     
     $("#foto").append(fotoActual.clone(true).addClass("imgGrande"))
@@ -88,16 +89,20 @@ function borraFoto(guardada){
     if(guardada){
          window.resolveLocalFileSystemURI(fotoActual.attr("src"), function(entrada){
              var idFotoActual = parseInt(fotoActual.attr("id").split("G")[1])
-             almacenadas[idFotoActual] = null;
+             alert(fotoActual.attr("id"));
+             $("#contenedorG"+idFotoActual).remove();
+             almacenadas[idFotoActual] = undefined;
+             posicionesG[idFotoActual] = undefined;
              entrada.remove();
-              //$("#imagen" + idFotoActual).hide();
              desaparece();
          }, onFail);
     }
     else{
         var idFotoActual = parseInt(fotoActual.attr("id").split("T")[1])
-            fotos[idFotoActual] = null;
-            //$("#marcoT").empty();
+            alert("#contenedorT"+idFotoActual);
+            $("#contenedorT"+idFotoActual).remove();
+            fotos[idFotoActual] = undefined;
+            posicionesT[idFotoActual] = undefined;
             desaparece();
     }
 }
@@ -114,11 +119,12 @@ function mueveImagen(imagen){
     window.resolveLocalFileSystemURI(cordova.file.dataDirectory, function(dest){
         var nombre = "imagen"+numeroFotosG+".jpg";
         imagen.copyTo(dest, nombre, function(){
-            almacenadas.push(fotoActual);
+            posicionesG[numeroFotosG]=posicionesT[idFotoActual]
             incrustaFotoGuardada(fotoActual.attr("src"));
             var idFotoActual = parseInt(fotoActual.attr("id").split("T")[1])
-            fotos[idFotoActual] = null;
-            //$("#marcoT").empty();
+            fotos[idFotoActual] = undefined;
+            posicionesT[idFotoActual] = undefined;
+            $("#contenedorT"+idFotoActual).remove();
             desaparece();
         }, onFail);
     }, onFail);
