@@ -12,13 +12,18 @@ var botonBorrar = $('<button onclick="" id = "borrar">Borrar</button>');
 function incrustaFotoTemp(imagen) {
     var link = $('<a href="#' + numeroFotosT + '"/>');
     link.click(function(){muestraFoto($(this),false)});
-    var img = $('<img clas = "imagen" id="imagenT' + numeroFotosT + '"src="' + imagen +'"/>');
+    var img = $('<img class="imagenes" id="imagenT' + numeroFotosT + '"src="' + imagen +'"/>');
     fotos.push(img);
     
     var miniatura = img.clone(true).MyThumbnail({thumbWidth:50,thumbHeight:50,backgroundColor:"#ccc",imageDivClass:"myPic"});
     link.append(miniatura);
     
-    $("#marcoT").append(link);
+    var contenedor = $('<div class="contenedores"></div>')
+    contenedor.attr("id","contenedorT"+numeroFotosT);
+    alert(contenedor.attr("id"))
+    
+    contenedor.append(link);
+    $("#marcoT").append(contenedor);
     
     numeroFotosT++;   
 }
@@ -26,15 +31,16 @@ function incrustaFotoTemp(imagen) {
 function incrustaFotoGuardada(imagen){
     var link = $('<a href="#' + numeroFotosG + '"/>');
     link.click(function(){muestraFoto($(this),true)});
-    var img = $('<img clas = "imagen" id="imagenG' + numeroFotosG + '"src="' + imagen +'"/>');
+    var img = $('<img class="imagen" id="imagenG' + numeroFotosG + '"src="' + imagen +'"/>');
     almacenadas.push(img);
     
     var miniatura = img.clone(true).MyThumbnail({thumbWidth:50,thumbHeight:50,backgroundColor:"#ccc",imageDivClass:"myPic"});
-    
-
     link.append(miniatura);
+    var contenedor = $('<div class="contenedores"' + numeroFotosG + '"></div>')
+    contenedor.attr("id","contenedorG"+numeroFotosG);
     
-    $("#marcoG").append(link);
+    contenedor.append(link);
+    $("#marcoG").append(contenedor);
     
     numeroFotosG++;   
 }
@@ -80,16 +86,18 @@ function borraFoto(guardada){
     if(guardada){
          window.resolveLocalFileSystemURI(fotoActual.attr("src"), function(entrada){
              var idFotoActual = parseInt(fotoActual.attr("id").split("G")[1])
-             almacenadas[idFotoActual] = null;
+             alert(fotoActual.attr("id"));
+             $("#contenedorG"+idFotoActual).remove();
+             almacenadas[idFotoActual] = undefined;
              entrada.remove();
-              //$("#marcoT").empty();
              desaparece();
          }, onFail);
     }
     else{
         var idFotoActual = parseInt(fotoActual.attr("id").split("T")[1])
-            fotos[idFotoActual] = null;
-            //$("#marcoT").empty();
+            alert("#contenedorT"+idFotoActual);
+            $("#contenedorT"+idFotoActual).remove();
+            fotos[idFotoActual] = undefined;
             desaparece();
     }
 }
@@ -106,11 +114,12 @@ function mueveImagen(imagen){
     window.resolveLocalFileSystemURI(cordova.file.dataDirectory, function(dest){
         var nombre = "imagen"+numeroFotosG+".jpg";
         imagen.copyTo(dest, nombre, function(){
-            almacenadas.push(fotoActual);
             incrustaFotoGuardada(fotoActual.attr("src"));
             var idFotoActual = parseInt(fotoActual.attr("id").split("T")[1])
-            fotos[idFotoActual] = null;
-            //$("#marcoT").empty();
+            fotos[idFotoActual] = undefined;
+            alert($("#contenedorT"+idFotoActual));
+            $("#contenedorT"+idFotoActual).remove();
+            alert("llegodef");
             desaparece();
         }, onFail);
     }, onFail);

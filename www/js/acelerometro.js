@@ -25,22 +25,30 @@ function dameSigno(acceleration){
 function compruebaFoto() {
     var idFoto= fotoActual.attr('id');
     var numeroFoto=parseInt(idFoto.charAt(idFoto.length-1));
-    if(idFoto.charAt(idFoto.length-2)=='T'){
-        if(fotos[numeroFoto+flagSigno]){
-            cambiaFoto(numeroFoto, false)
-        }
-    }
     
+    var indice = numeroFoto+flagSigno;
+    if(idFoto.charAt(idFoto.length-2)=='T'){
+        for (i = indice ;((indice>=0)&&(indice<fotos.length)); i=i+flagSigno){
+            if (fotos[i]){
+                cambiaFoto(i, false);
+                return;
+            }
+        }
+}
     else{
-        if(almacenadas[numeroFoto+flagSigno]){
-            cambiaFoto(numeroFoto, true)
-        } 
+        for (i = indice ;((indice>=0)&&(indice<almacenadas.length)); i=i+flagSigno){
+            if (almacenadas[i]){
+                cambiaFoto(i, true);
+                return;
+            }
+        }
     }
 }
 
+
 function cambiaFoto(numeroFoto, guardada) {
-     desaparece();
-        var indiceFoto = numeroFoto+flagSigno;
+    desaparece();
+    var indiceFoto = numeroFoto;
         
     if(guardada){
         fotoActual = almacenadas[indiceFoto]
