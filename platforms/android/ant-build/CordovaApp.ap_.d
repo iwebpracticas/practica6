@@ -2,6 +2,7 @@
  : /home/sergio/IWEB/practica6/platforms/android/res/drawable-mdpi/icon.png \
 /home/sergio/IWEB/practica6/platforms/android/res/drawable-xhdpi/icon.png \
 /home/sergio/IWEB/practica6/platforms/android/res/drawable-land-mdpi/screen.png \
+/home/sergio/IWEB/practica6/platforms/android/res/values/version.xml \
 /home/sergio/IWEB/practica6/platforms/android/res/values/strings.xml \
 /home/sergio/IWEB/practica6/platforms/android/res/drawable-hdpi/icon.png \
 /home/sergio/IWEB/practica6/platforms/android/res/drawable-land-hdpi/screen.png \
@@ -50,7 +51,9 @@
 /home/sergio/IWEB/practica6/platforms/android/assets/www/plugins/org.apache.cordova.file-transfer \
 /home/sergio/IWEB/practica6/platforms/android/assets/www/plugins/org.apache.cordova.device-motion \
 /home/sergio/IWEB/practica6/platforms/android/assets/www/plugins/org.apache.cordova.file \
+/home/sergio/IWEB/practica6/platforms/android/assets/www/plugins/plugin.http.request \
 /home/sergio/IWEB/practica6/platforms/android/assets/www/plugins/it.mobimentum.phonegapspinnerplugin \
+/home/sergio/IWEB/practica6/platforms/android/assets/www/plugins/plugin.google.maps \
 /home/sergio/IWEB/practica6/platforms/android/assets/www/plugins/org.apache.cordova.camera \
 /home/sergio/IWEB/practica6/platforms/android/assets/www/plugins/org.apache.cordova.file-transfer/www \
 /home/sergio/IWEB/practica6/platforms/android/assets/www/plugins/org.apache.cordova.file-transfer/www/FileTransferError.js \
@@ -81,8 +84,12 @@
 /home/sergio/IWEB/practica6/platforms/android/assets/www/plugins/org.apache.cordova.file/www/FileReader.js \
 /home/sergio/IWEB/practica6/platforms/android/assets/www/plugins/org.apache.cordova.file/www/DirectoryReader.js \
 /home/sergio/IWEB/practica6/platforms/android/assets/www/plugins/org.apache.cordova.file/www/android/FileSystem.js \
+/home/sergio/IWEB/practica6/platforms/android/assets/www/plugins/plugin.http.request/www \
+/home/sergio/IWEB/practica6/platforms/android/assets/www/plugins/plugin.http.request/www/http-request.js \
 /home/sergio/IWEB/practica6/platforms/android/assets/www/plugins/it.mobimentum.phonegapspinnerplugin/www \
 /home/sergio/IWEB/practica6/platforms/android/assets/www/plugins/it.mobimentum.phonegapspinnerplugin/www/spinnerplugin.js \
+/home/sergio/IWEB/practica6/platforms/android/assets/www/plugins/plugin.google.maps/www \
+/home/sergio/IWEB/practica6/platforms/android/assets/www/plugins/plugin.google.maps/www/googlemaps-cdv-plugin.js \
 /home/sergio/IWEB/practica6/platforms/android/assets/www/plugins/org.apache.cordova.camera/www \
 /home/sergio/IWEB/practica6/platforms/android/assets/www/plugins/org.apache.cordova.camera/www/CameraPopoverHandle.js \
 /home/sergio/IWEB/practica6/platforms/android/assets/www/plugins/org.apache.cordova.camera/www/CameraConstants.js \

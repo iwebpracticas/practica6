@@ -7,14 +7,6 @@
     text-align: center;
     top: 20%;
 }
-#mapa {
-    display: none;
-    width: inherit;
-    height: inherit;
-    position: relative;
-    text-align: center;
-    top: 20%;
-}
 
 .imgGrande {
     
@@ -22,17 +14,90 @@
     height: auto;
     vertical-align: middle;
     position: relative;
-    transform: translateY(-50%)
+    transform: translateY(-50%);
+}
+
+
+#marcoG {
+    display: inline-block;
+    overflow-y: scroll;
+}
+
+#marcoT{
+    display: inline-block;
+    overflow-y: scroll;
 }
 
 .marco {
-    display: inline-block;
+    margin-top:4px;
     border: 2px solid black;
-    width: 100%;
-    height: 100px;
-    overflow: scroll;
+    width:100%;
+    heigth: 100px;
 }
 
+#mapa{
+    display: none;
+    width: 100%;
+    height: 300px;
+}
 
+h1{
+    font-weight:normal;
+    text-decoration:underline;
+    letter-spacing:1pt;
+    word-spacing:2pt;
+    text-align:center;
+    text-transform:uppercase;
+    font-family:arial, helvetica, sans-serif;
+    line-height:1;
+}
 
+h2{
+    font-weight:normal;
+    letter-spacing:1pt;
+    word-spacing:2pt;
+    text-align:center;
+    font-family:arial, helvetica, sans-serif;
+    line-height:1;
+}
 
+body{
+ background-color: #20B2AA;  
+ font-family:arial, helvetica, sans-serif;
+}
+
+/*button css de http://www.bestcssbuttongenerator.com/*/
+
+button {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #44c767), color-stop(1, #5cbf2a));
+	background:-moz-linear-gradient(top, #44c767 5%, #5cbf2a 100%);
+	background:-webkit-linear-gradient(top, #44c767 5%, #5cbf2a 100%);
+	background:-o-linear-gradient(top, #44c767 5%, #5cbf2a 100%);
+	background:-ms-linear-gradient(top, #44c767 5%, #5cbf2a 100%);
+	background:linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#44c767', endColorstr='#5cbf2a',GradientType=0);
+	background-color:#44c767;
+	-moz-border-radius:28px;
+	-webkit-border-radius:28px;
+
+    text-transform:uppercase;	border-radius:28px;
+	border:1px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:arial;
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+    
+button:active {
+	position:relative;
+	top:1px;
+}
+
+.myPic
+{
+
+}

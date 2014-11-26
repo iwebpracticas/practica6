@@ -89,7 +89,6 @@ function borraFoto(guardada){
     if(guardada){
          window.resolveLocalFileSystemURI(fotoActual.attr("src"), function(entrada){
              var idFotoActual = parseInt(fotoActual.attr("id").split("G")[1])
-             alert(fotoActual.attr("id"));
              $("#contenedorG"+idFotoActual).remove();
              almacenadas[idFotoActual] = undefined;
              posicionesG[idFotoActual] = undefined;
@@ -99,7 +98,6 @@ function borraFoto(guardada){
     }
     else{
         var idFotoActual = parseInt(fotoActual.attr("id").split("T")[1])
-            alert("#contenedorT"+idFotoActual);
             $("#contenedorT"+idFotoActual).remove();
             fotos[idFotoActual] = undefined;
             posicionesT[idFotoActual] = undefined;
