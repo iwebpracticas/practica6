@@ -11,10 +11,6 @@ function geolocalizame(imagen){
         if (posicionesT[idGeo]){return;}
  navigator.geolocation.getCurrentPosition(exitoLocalizacionT, errorGeo,{timeout: 30000, enableHighAccuracy: true});
     }
-    /*else{
-        if (posicionesG[idGeo]){return;}
- navigator.geolocation.getCurrentPosition(exitoLocalizacionG, errorGeo,{timeout: 30000, enableHighAccuracy: true});
-    }*/
 }
 
 

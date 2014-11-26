@@ -20,19 +20,23 @@
 
 #marcoG {
     display: inline-block;
-    overflow-y: scroll;
-}
-
-#marcoT{
-    display: inline-block;
-    overflow-y: scroll;
-}
-
-.marco {
     margin-top:4px;
     border: 2px solid black;
     width:100%;
     heigth: 100px;
+    overflow-y: auto;
+}
+
+#marcoT{
+    display: inline-block;
+    margin-top:4px;
+    border: 2px solid black;
+    width:100%;
+    heigth: 100px;
+    overflow-y: scroll;
+}
+
+.marco {
 }
 
 #mapa{
@@ -47,7 +51,6 @@ h1{
     letter-spacing:1pt;
     word-spacing:2pt;
     text-align:center;
-    text-transform:uppercase;
     font-family:arial, helvetica, sans-serif;
     line-height:1;
 }
