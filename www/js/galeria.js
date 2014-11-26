@@ -3,10 +3,10 @@ var numeroFotosG = 0;
 var fotoActual;
 var fotos = [];
 var almacenadas = [];
-var botones = $('<div id ="botones"> <button onclick="geolocalizame()" id="geolocalizar">Geolocalizar</button><button onclick="desaparece()" id = "salir">Salir</button><br></div>');
+var botones = $('<div id ="botones"> <button onclick="desaparece()" id = "salir">Salir</button><br></div>');
 var botonGuardar = $('<button onclick="" id = "guardar">Guardar</button>');
 var botonBorrar = $('<button onclick="" id = "borrar">Borrar</button>');
-
+var botonMapa = $('<button onclick="" id="mostrar">Mapa</button>');
 
 
 function incrustaFotoTemp(imagen) {
@@ -20,7 +20,9 @@ function incrustaFotoTemp(imagen) {
     
     $("#marcoT").append(link);
     
-    numeroFotosT++;   
+    numeroFotosT++; 
+    
+    //geolocalizame(img);
 }
 
 function incrustaFotoGuardada(imagen){
@@ -37,6 +39,8 @@ function incrustaFotoGuardada(imagen){
     $("#marcoG").append(link);
     
     numeroFotosG++;   
+    
+    //geolocalizame(img);
 }
 
 function muestraFoto(link,guardada) {
@@ -49,15 +53,19 @@ function muestraFoto(link,guardada) {
         fotoActual = almacenadas[indiceFoto]
         botonBorrar.attr("onclick", "borraFoto(true)");
         botonGuardar.attr("onclick", "guardaFoto(true)");
+        botonMapa.attr("onclick", "muestrameEnMapa(true)");
         botones.append(botonGuardar);
         botones.append(botonBorrar);
+        botones.append(botonMapa);
     }
     else{
         fotoActual = fotos[indiceFoto]
         botonBorrar.attr("onclick", "borraFoto(false)");
         botonGuardar.attr("onclick", "guardaFoto(false)");
+        botonMapa.attr("onclick", "muestrameEnMapa(false)");
         botones.append(botonGuardar);
         botones.append(botonBorrar);
+        botones.append(botonMapa);
     }
     
     $("#foto").append(fotoActual.clone(true).addClass("imgGrande"))
@@ -82,7 +90,7 @@ function borraFoto(guardada){
              var idFotoActual = parseInt(fotoActual.attr("id").split("G")[1])
              almacenadas[idFotoActual] = null;
              entrada.remove();
-              //$("#marcoT").empty();
+              //$("#imagen" + idFotoActual).hide();
              desaparece();
          }, onFail);
     }
