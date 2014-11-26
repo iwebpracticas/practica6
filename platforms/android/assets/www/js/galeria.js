@@ -3,7 +3,7 @@ var numeroFotosG = 0;
 var fotoActual;
 var fotos = [];
 var almacenadas = [];
-var botones = $('<div id ="botones"> <button onclick="" id="mostrarMapa">Mapa</button><button onclick="desaparece()" id ="salir">Salir</button><br></div>');
+var botones = $('<div id ="botones"> <button onclick="muestrameEnMapa()" id="mostrarMapa">Mapa</button><button onclick="desaparece()" id ="salir">Salir</button><br></div>');
 var botonGuardar = $('<button onclick="" id = "guardar">Guardar</button>');
 var botonBorrar = $('<button onclick="" id = "borrar">Borrar</button>');
 
@@ -92,6 +92,7 @@ function borraFoto(guardada){
              alert(fotoActual.attr("id"));
              $("#contenedorG"+idFotoActual).remove();
              almacenadas[idFotoActual] = undefined;
+             posicionesG[idFotoActual] = undefined;
              entrada.remove();
              desaparece();
          }, onFail);
@@ -101,6 +102,7 @@ function borraFoto(guardada){
             alert("#contenedorT"+idFotoActual);
             $("#contenedorT"+idFotoActual).remove();
             fotos[idFotoActual] = undefined;
+            posicionesT[idFotoActual] = undefined;
             desaparece();
     }
 }
@@ -117,12 +119,12 @@ function mueveImagen(imagen){
     window.resolveLocalFileSystemURI(cordova.file.dataDirectory, function(dest){
         var nombre = "imagen"+numeroFotosG+".jpg";
         imagen.copyTo(dest, nombre, function(){
+            posicionesG[numeroFotosG]=posicionesT[idFotoActual]
             incrustaFotoGuardada(fotoActual.attr("src"));
             var idFotoActual = parseInt(fotoActual.attr("id").split("T")[1])
             fotos[idFotoActual] = undefined;
-            alert($("#contenedorT"+idFotoActual));
+            posicionesT[idFotoActual] = undefined;
             $("#contenedorT"+idFotoActual).remove();
-            alert("llegodef");
             desaparece();
         }, onFail);
     }, onFail);

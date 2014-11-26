@@ -7,6 +7,14 @@
     text-align: center;
     top: 20%;
 }
+#mapa {
+    display: none;
+    width: inherit;
+    height: inherit;
+    position: relative;
+    text-align: center;
+    top: 20%;
+}
 
 .imgGrande {
     
@@ -17,11 +25,21 @@
     transform: translateY(-50%)
 }
 
-.marco {
+.marcoT {
     display: inline-block;
     border: 2px solid black;
-    height: 100%;
+    width: 100%;
+    height: 200px;
     overflow: scroll;
 }
+
+.marcoG {
+    display: inline-block;
+    border: 2px solid black;
+    width: 100%;
+    height: 200px;
+    overflow: scroll;
+}
+
 
 

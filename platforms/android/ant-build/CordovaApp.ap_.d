@@ -36,8 +36,10 @@
 /home/sergio/IWEB/practica6/platforms/android/assets/www/plugins \
 /home/sergio/IWEB/practica6/platforms/android/assets/www/img \
 /home/sergio/IWEB/practica6/platforms/android/assets/www/index.html \
+/home/sergio/IWEB/practica6/platforms/android/assets/www/js/zepto.min.js \
 /home/sergio/IWEB/practica6/platforms/android/assets/www/js/geolocalizacion.js \
 /home/sergio/IWEB/practica6/platforms/android/assets/www/js/almacenamiento.js \
+/home/sergio/IWEB/practica6/platforms/android/assets/www/js/gmaps.js \
 /home/sergio/IWEB/practica6/platforms/android/assets/www/js/galeria.js \
 /home/sergio/IWEB/practica6/platforms/android/assets/www/js/acelerometro.js \
 /home/sergio/IWEB/practica6/platforms/android/assets/www/js/MyThumbnail.js \

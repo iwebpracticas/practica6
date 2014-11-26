@@ -3,7 +3,7 @@ var numeroFotosG = 0;
 var fotoActual;
 var fotos = [];
 var almacenadas = [];
-var botones = $('<div id ="botones"> <button onclick="" id="mostrarMapa">Mapa</button><button onclick="desaparece()" id ="salir">Salir</button><br></div>');
+var botones = $('<div id ="botones"> <button onclick="muestrameEnMapa()" id="mostrarMapa">Mapa</button><button onclick="desaparece()" id ="salir">Salir</button><br></div>');
 var botonGuardar = $('<button onclick="" id = "guardar">Guardar</button>');
 var botonBorrar = $('<button onclick="" id = "borrar">Borrar</button>');
 

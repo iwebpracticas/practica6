@@ -9,4 +9,6 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <access origin="*" launch-external="yes"/>
+    <access origin="geo:*" launch-external="yes" />
 </widget>
